@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 
 const Link = (props) => {
   const { active, children, onClick } = props;
-
-  if (!active) return <span>{children}</span>;
-
   return (
     <button
       type="button"
+      disabled={active}
+      style={{ marginLeft: '4px' }}
       onClick={(e) => {
         e.preventDefault();
         onClick();

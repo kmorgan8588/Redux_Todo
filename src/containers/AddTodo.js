@@ -27,7 +27,7 @@ const MockAddTodo = ({ dispatch }) => {
   );
 };
 
-MockAddTodo.propType = {
+MockAddTodo.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
