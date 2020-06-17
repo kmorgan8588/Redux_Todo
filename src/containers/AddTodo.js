@@ -1,30 +1,36 @@
-import React from 'react'l
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addTodo } from '../redux/actions';
 
-let AddTodo = ({dispatch}) => {
+const MockAddTodo = ({ dispatch }) => {
   let input;
 
   return (
     <div>
-      <form onSubmit={e => {
-        e.preventDefault();
-        if (!input.value.trim())
-          return;
-        dispatch(addTodo(input.value))
-        input.value = ''
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (!input.value.trim()) return;
+          dispatch(addTodo(input.value));
+          input.value = '';
         }}
       >
-      <input ref={node => {
-        input = node
-      }}
-      />
-      <button type='submit'>Add Todo</button>
+        <input
+          ref={(node) => {
+            input = node;
+          }}
+        />
+        <button type="submit">Add Todo</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-AddTodo = connect()(AddTodo);
+MockAddTodo.propType = {
+  dispatch: PropTypes.func.isRequired,
+};
+
+const AddTodo = connect()(MockAddTodo);
 
 export default AddTodo;
